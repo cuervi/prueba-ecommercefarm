@@ -3,8 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use app\MailerProviderInterface;
 
-class SmtpProvider extends ServiceProvider
+class SmtpProvider extends ServiceProvider implements MailerProviderInterface
 {
     /**
      * Register services.
@@ -25,4 +26,9 @@ class SmtpProvider extends ServiceProvider
     {
         //
     }
+    
+    public function send($email, $message) {
+        
+    }
+
 }

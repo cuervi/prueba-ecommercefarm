@@ -174,6 +174,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+        /*
+         * Providers Notificaciones
+         */
+        App\Providers\SmtpProvider::class,
+        App\Providers\SesProvider::class
 
     ],
 

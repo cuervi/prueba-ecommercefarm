@@ -28,7 +28,7 @@ class SesProvider extends ServiceProvider implements MailerProviderInterface
     }
     
     public function send($email, $message) {
-       return false; 
+       return true; 
     }
 
 }

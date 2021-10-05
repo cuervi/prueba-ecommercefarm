@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use app\MailerProviderInterface;
+use App\MailerProviderInterface;
 
 class SmtpProvider extends ServiceProvider implements MailerProviderInterface
 {
@@ -28,7 +28,7 @@ class SmtpProvider extends ServiceProvider implements MailerProviderInterface
     }
     
     public function send($email, $message) {
-        
+        return true;
     }
 
 }

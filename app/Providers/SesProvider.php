@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use app\MailerProviderInterface;
+use App\MailerProviderInterface;
 
 class SesProvider extends ServiceProvider implements MailerProviderInterface
 {
@@ -16,7 +16,7 @@ class SesProvider extends ServiceProvider implements MailerProviderInterface
     {
         //
     }
-
+    
     /**
      * Bootstrap services.
      *
@@ -28,7 +28,7 @@ class SesProvider extends ServiceProvider implements MailerProviderInterface
     }
     
     public function send($email, $message) {
-        
+       return false; 
     }
 
 }

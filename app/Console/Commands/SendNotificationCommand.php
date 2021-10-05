@@ -42,14 +42,26 @@ class SendNotificationCommand extends Command
     {
         $id = $this->argument('id');
         $user = User::searchUser($id);
-        //Generamos una cadena de texto aleatoria de 20 caracteres
-        $message = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
-        $notificationService = new NotificationService(new SesProvider(app()));
-        $result = $notificationService->notify($user, $message);
-        $this->info('id: '. $user->id);
-        $this->info('email: '. $user->email);
-        $this->info('message: '. $message);
-        $this->info('result: '. $result);
+        //Controlamos que exista el usuario
+        if ($user !== null) {
+            //Generamos una cadena de texto aleatoria de 20 caracteres
+            $message = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
+            $notificationService = new NotificationService(new SesProvider(app()));
+            $result = $notificationService->notify($user, $message);
+            //Hacemos el output
+            $this->info('id: '. $user->id);
+            $this->info('email: '. $user->email);
+            $this->info('message: '. $message);
+            $this->info('result: '. $result);
+        }
+        else {
+           //Si no existe mostramos por consola el mensaje de error
+            $this->info('id: ');
+            $this->info('email:');
+            $this->info('message: El usuario no existe');
+            $this->info('result: '. false);
+        }
+        
        
     }
 }

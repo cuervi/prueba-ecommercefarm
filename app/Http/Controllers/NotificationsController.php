@@ -18,6 +18,16 @@ class NotificationsController extends Controller
     public function sendNotification ($id) {
         //cogemos el usuario
         $user = User::searchUser($id);
+        //Controlamos que exista el usuario
+        if ($user === null) {
+            //Devolvemos un json con valores vacíos y el mensaje de que no existe para que no falle
+            return response()->json([
+                'id' => '',
+                'email' => '',
+                'message' => 'El usuario no existe',
+                'result' => false
+            ]);
+        }
         //Generamos una cadena de texto aleatoria de 20 caracteres
         $message = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
         $notificationService = new NotificationService(new SmtpProvider(app()));
